@@ -53,9 +53,9 @@ const TimeBlock = ({ value, label }) => {
             >
                 {/* Border Glow */}
                 <div
-                    className="absolute -inset-[1px] rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                    className="absolute -inset-[1px] rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                     style={{
-                        background: `radial-gradient(300px circle at var(--x) var(--y), rgba(255,255,255,0.4), transparent 40%)`
+                        background: `radial-gradient(300px circle at var(--x) var(--y), rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 40%, transparent 80%)`
                     }}
                 />
 
@@ -82,9 +82,9 @@ const TimeBlock = ({ value, label }) => {
 
                     {/* Spotlight Shine - Reduced opacity by 5% (0.2 -> 0.15) */}
                     <div
-                        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none mix-blend-overlay"
+                        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none mix-blend-overlay"
                         style={{
-                            background: `radial-gradient(600px circle at var(--x) var(--y), rgba(255,255,255,0.15), transparent 40%)`
+                            background: `radial-gradient(600px circle at var(--x) var(--y), rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 50%, transparent 100%)`
                         }}
                     />
 
