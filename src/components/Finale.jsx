@@ -5,18 +5,27 @@ export const Finale = () => {
         <>
             {/* The Shockwave (Big Bang) */}
             <motion.div
-                initial={{ scale: 0, opacity: 1 }}
-                animate={{ scale: 50, opacity: 0 }}
-                transition={{ duration: 2.5, ease: "circOut" }}
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 50, opacity: [0, 1, 0] }}
+                transition={{
+                    duration: 3,
+                    times: [0, 0.1, 1], // Rapid fade in, slow fade out
+                    ease: "circOut"
+                }}
                 className="fixed inset-0 z-[100] bg-white rounded-full pointer-events-none origin-center"
             />
 
             {/* Flash Overlay (Secondary Fade) */}
             <motion.div
-                initial={{ opacity: 1 }}
-                animate={{ opacity: 0 }}
-                transition={{ duration: 4, ease: "easeOut", delay: 0.2 }}
-                className="fixed inset-0 z-[90] bg-gradient-to-br from-amber-100 to-white pointer-events-none"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0, 1, 0] }}
+                transition={{
+                    duration: 5,
+                    times: [0, 0.05, 1], // Very rapid fade in, very slow fade out
+                    ease: "easeOut",
+                    delay: 0.1
+                }}
+                className="fixed inset-0 z-[90] bg-gradient-to-br from-amber-50 to-white pointer-events-none"
             />
 
             {/* The Reveal: 2026 */}

@@ -116,6 +116,8 @@ export const useAudio = () => {
 
         // Simple Major Chord (C Major: C, E, G)
         const freqs = [261.63, 329.63, 392.00, 523.25];
+        const playDuration = 15;
+        const fadeOutDuration = 5;
 
         freqs.forEach(f => {
             const osc = ctx.createOscillator();
@@ -126,9 +128,14 @@ export const useAudio = () => {
             gain.gain.setValueAtTime(0, now);
             gain.gain.linearRampToValueAtTime(0.1, now + 5); // Slow fade in
 
+            // Wait 15s then fade out over 5s
+            gain.gain.setValueAtTime(0.1, now + playDuration);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + playDuration + fadeOutDuration);
+
             osc.connect(gain);
             gain.connect(masterGain.current);
             osc.start(now);
+            osc.stop(now + playDuration + fadeOutDuration + 1);
         });
     }, [initAudio]);
 
