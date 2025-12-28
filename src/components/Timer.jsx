@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { motion, AnimatePresence, useMotionValue, useTransform, useSpring } from 'framer-motion';
 
-const TimeBlock = ({ value, label }) => {
+const TimeBlock = ({ value, label, sequenceState }) => {
     const ref = useRef(null);
 
     // Mouse position for tilt (normalized 0 to 1)
@@ -50,6 +50,16 @@ const TimeBlock = ({ value, label }) => {
                     "--y": "50%",
                 }}
                 className="relative w-28 h-32 md:w-40 md:h-52 rounded-2xl cursor-default group"
+                animate={
+                    sequenceState === 'buildup' ? { x: [0, -2, 2, -1, 1, 0], y: [0, 2, -2, 1, -1, 0] } :
+                        sequenceState === 'implosion' ? { scale: 0, opacity: 0 } :
+                            {}
+                }
+                transition={
+                    sequenceState === 'buildup' ? { duration: 0.1, repeat: Infinity } :
+                        sequenceState === 'implosion' ? { duration: 0.5, ease: "backIn" } :
+                            {}
+                }
             >
                 {/* Border Glow */}
                 <div
@@ -97,13 +107,13 @@ const TimeBlock = ({ value, label }) => {
     );
 };
 
-export const Timer = ({ days, hours, minutes, seconds }) => {
+export const Timer = ({ days, hours, minutes, seconds, sequenceState }) => {
     return (
         <div className="flex flex-wrap justify-center items-center z-10 w-full max-w-5xl">
-            <TimeBlock value={days} label="Days" />
-            <TimeBlock value={hours} label="Hours" />
-            <TimeBlock value={minutes} label="Minutes" />
-            <TimeBlock value={seconds} label="Seconds" />
+            <TimeBlock value={days} label="Days" sequenceState={sequenceState} />
+            <TimeBlock value={hours} label="Hours" sequenceState={sequenceState} />
+            <TimeBlock value={minutes} label="Minutes" sequenceState={sequenceState} />
+            <TimeBlock value={seconds} label="Seconds" sequenceState={sequenceState} />
         </div>
     );
 };

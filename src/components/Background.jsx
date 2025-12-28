@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
-export const Background = () => {
+export const Background = ({ sequenceState }) => {
     // Mouse tracking - Fluid Lag Physics
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
@@ -45,7 +45,16 @@ export const Background = () => {
                     repeat: Infinity,
                     ease: "easeInOut"
                 }}
-                className="absolute top-[-20%] left-[-10%] w-[70vw] h-[70vw] rounded-full blur-[120px] opacity-60 bg-gradient-to-r from-indigo-600 to-purple-800 mix-blend-overlay"
+                className={`absolute top-[-20%] left-[-10%] w-[70vw] h-[70vw] rounded-full blur-[120px] opacity-60 mix-blend-overlay transition-colors duration-[2000ms] ${sequenceState === 'supernova' ? 'bg-amber-100' : 'bg-gradient-to-r from-indigo-600 to-purple-800'}`}
+                animate={{
+                    scale: [1, 1.1, 1],
+                    opacity: [0.3, 0.5, 0.3],
+                }}
+                transition={{
+                    duration: sequenceState === 'buildup' ? 2 : 10,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                }}
             />
 
             {/* Liquid Mesh Layer 2 - Cyan/Teal Highlight */}
@@ -60,7 +69,16 @@ export const Background = () => {
                     repeat: Infinity,
                     ease: "easeInOut"
                 }}
-                className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] rounded-full blur-[140px] opacity-50 bg-gradient-to-t from-blue-700 via-cyan-600 to-teal-500 mix-blend-overlay"
+                className={`absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] rounded-full blur-[140px] opacity-50 mix-blend-overlay transition-colors duration-[2000ms] ${sequenceState === 'supernova' ? 'bg-orange-200' : 'bg-gradient-to-t from-blue-700 via-cyan-600 to-teal-500'}`}
+                animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.2, 0.4, 0.2],
+                }}
+                transition={{
+                    duration: sequenceState === 'buildup' ? 3 : 12,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                }}
             />
 
             {/* Subtler Center Ambient */}
