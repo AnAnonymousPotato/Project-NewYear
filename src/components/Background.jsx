@@ -36,48 +36,32 @@ export const Background = ({ sequenceState }) => {
             {/* Liquid Mesh Layer 1 - Deep Indigo/Purple */}
             <motion.div
                 style={{ x: x1, y: y1 }}
+                className={`absolute top-[-20%] left-[-10%] w-[70vw] h-[70vw] rounded-full blur-[120px] opacity-60 mix-blend-overlay transition-colors duration-[2000ms] ${sequenceState === 'supernova' ? 'bg-amber-100' : 'bg-gradient-to-r from-indigo-600 to-purple-800'}`}
                 animate={{
                     scale: [1, 1.2, 1],
                     rotate: [0, 90, 0],
-                }}
-                transition={{
-                    duration: 20,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                }}
-                className={`absolute top-[-20%] left-[-10%] w-[70vw] h-[70vw] rounded-full blur-[120px] opacity-60 mix-blend-overlay transition-colors duration-[2000ms] ${sequenceState === 'supernova' ? 'bg-amber-100' : 'bg-gradient-to-r from-indigo-600 to-purple-800'}`}
-                animate={{
-                    scale: [1, 1.1, 1],
                     opacity: [0.3, 0.5, 0.3],
                 }}
                 transition={{
-                    duration: sequenceState === 'buildup' ? 2 : 10,
+                    duration: sequenceState === 'buildup' ? 2 : 20,
                     repeat: Infinity,
-                    ease: 'easeInOut',
+                    ease: "easeInOut"
                 }}
             />
 
             {/* Liquid Mesh Layer 2 - Cyan/Teal Highlight */}
             <motion.div
                 style={{ x: x2, y: y2 }}
+                className={`absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] rounded-full blur-[140px] opacity-50 mix-blend-overlay transition-colors duration-[2000ms] ${sequenceState === 'supernova' ? 'bg-orange-200' : 'bg-gradient-to-t from-blue-700 via-cyan-600 to-teal-500'}`}
                 animate={{
                     scale: [1.2, 1, 1.2],
                     rotate: [0, -60, 0],
-                }}
-                transition={{
-                    duration: 25,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                }}
-                className={`absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] rounded-full blur-[140px] opacity-50 mix-blend-overlay transition-colors duration-[2000ms] ${sequenceState === 'supernova' ? 'bg-orange-200' : 'bg-gradient-to-t from-blue-700 via-cyan-600 to-teal-500'}`}
-                animate={{
-                    scale: [1, 1.2, 1],
                     opacity: [0.2, 0.4, 0.2],
                 }}
                 transition={{
-                    duration: sequenceState === 'buildup' ? 3 : 12,
+                    duration: sequenceState === 'buildup' ? 2.5 : 25,
                     repeat: Infinity,
-                    ease: 'easeInOut',
+                    ease: "easeInOut"
                 }}
             />
 
